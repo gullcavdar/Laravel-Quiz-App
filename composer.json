@@ -13,7 +13,10 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/jetstream": "^2.1",
+        "laravel/sanctum": "^2.6",
+        "laravel/tinker": "^2.5",
+        "livewire/livewire": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -26,7 +29,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "8.0.0"
+        }
     },
     "extra": {
         "laravel": {
