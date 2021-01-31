@@ -1,16 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+        Anasayfa
 
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="alert alert-danger">Alert</div>
-            </div>
-        </div>
+
+    <div class="alert alert-primary" role="alert">
+        A simple primary alert—check it out!
     </div>
+
 </x-app-layout>
