@@ -26,7 +26,7 @@ class QuizController extends Controller
      */
     public function create()
     {
-        return "create fonk";
+        return view('admin.quiz.create');
 
     }
 
@@ -36,9 +36,10 @@ class QuizController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    //quiz oluştura tıkladıktan sonra dönen veri
     public function store(Request $request)
     {
-        //
+        return $request->post();
     }
 
     /**
