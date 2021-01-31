@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Quiz extends Model
 {
     use HasFactory;
+
+    // oluşturulan quizi doldurma işlemi
+    protected $fillable = ['title', 'description', 'finished_at'];
 }
