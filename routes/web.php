@@ -21,9 +21,18 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', function () {
+Route::middleware(['auth', 'verified'])->get('/panel', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
+
+
+Route::group([
+    'middleware' => ['auth', 'isAdmin'],
+    'prefix' => 'admin'
+], function () {
+
+
+});
 
 
 
