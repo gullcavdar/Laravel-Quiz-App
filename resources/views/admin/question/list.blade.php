@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">
-                <a href="{{route('quizzes.create',$quiz->id)}}" class="btn btn-sm btn-primary">
+                <a href="{{route('questions.create',$quiz->id)}}" class="btn btn-sm btn-primary">
                     <i class="fas fa-plus"></i>
                     Soru Oluştur
                 </a>
@@ -26,14 +26,19 @@
                 @foreach($quiz->questions as $question)
                     <tr>
                         <td>{{$question->question}}</td>
-                        <td>{{$question->image}}</td>
+                        <td>
+                            @if($question->image)
+                                <a href="{{asset($question->image)}}" target="_blank" class="btn btn-sm btn-info">Görüntüle</a>
+                            @endif
+                        </td>
                         <td>{{$question->answer1}}</td>
                         <td>{{$question->answer2}}</td>
                         <td>{{$question->answer3}}</td>
                         <td>{{$question->answer4}}</td>
                         <td class="text-success">{{substr($question->correct_answer,-1)}}. Cevap</td>
                         <td>
-                            <a href="{{route('quizzes.edit', $quiz->id)}}" class="btn btn-sm btn-primary">
+                            <a href="{{route('questions.edit', [$quiz->id,$question->id])}}"
+                               class="btn btn-sm btn-primary">
                                 <i class="fas fa-pen"></i>
                             </a>
                             <a href="{{route('quizzes.destroy', $quiz->id)}}" class="btn btn-sm btn-danger">

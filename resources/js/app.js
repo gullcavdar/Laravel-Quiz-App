@@ -3,7 +3,7 @@ require('./bootstrap');
 require('alpinejs');
 
 
-/*import $ from 'jquery';
+import $ from 'jquery';
 
 window.jquery = $;
-window.$ = $;*/
+window.$ = $;
