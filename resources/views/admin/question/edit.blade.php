@@ -14,7 +14,7 @@
                     <label>Fotoğraf</label>
                     @if($question->image)
                         <a href="{{asset($question->image)}}" target="_blank">
-                            <img src="{{asset($question->image)}}" class="rounded m-3" style="width:100px;">
+                            <img src="{{asset($question->image)}}" class="rounded m-3">
                         </a>
                     @endif
                     <input name="image" type="file" class="form-control">
