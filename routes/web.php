@@ -31,7 +31,14 @@ Route::group([
     'middleware' => ['auth', 'isAdmin'],
     'prefix' => 'admin'
 ], function () {
+    // destroya delete ile ulaştığımız için get ile route yaparak ulaştık
+    //yukarı yazmamız lazım. okuma yukardan aşağı gerçekleşiyor.
+    // whereNumber yaptık çünkü create de bulunamdı hatası verdi
+    //id gelirse delete gelmezse oluştura gönder
+    Route::get('quizzes/{id}', [QuizController::class, 'destroy'])->whereNumber('id')->name('quizzes.destroy');
     Route::resource('quizzes', QuizController::class);
+
+
 });
 
 
