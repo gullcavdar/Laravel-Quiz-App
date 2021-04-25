@@ -11,7 +11,7 @@
                             <small>{{$quiz->finished_at ? $quiz->finished_at->diffForHumans().' bitiyor.' : null}}</small>
                         </div>
                         <p class="mb-1">{{Str::limit($quiz->description,100)}}</p>
-                        <small>And some small print.</small>
+                        <small>{{$quiz->questions_count}} Soru</small>
                     </a>
                 @endforeach
                 <div class="mt-2">
@@ -19,5 +19,22 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Quiz Sonuçları
+                </div>
+                <ul class="list-group list-group-flush">
+                @foreach($results as $result)
+                    <li class="list-group-item">
+                        <strong>{{$result->point}}</strong>
+                        -
+                        <a href="{{route('quiz.detail',$result->quiz->slug)}}">{{$result->quiz->title}}</a>
+                        
+                    </li>
+                @endforeach
+                </ul>
+                </div>
+            </div>
     </div>
 </x-app-layout>

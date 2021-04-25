@@ -26,7 +26,9 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('panel', [MainController::class, 'dashboard'])->name('dashboard');
-    Route::get('quiz/{slug}', [MainController::class, 'quiz_detail'])->name('quiz.detail');
+    Route::get('quiz/detail/{slug}', [MainController::class, 'quiz_detail'])->name('quiz.detail');
+    Route::get('quiz/{slug}', [MainController::class, 'quiz'])->name('quiz.join');
+    Route::post('quiz/{slug}/result', [MainController::class, 'result'])->name('quiz.result');
 });
 
 
@@ -39,6 +41,7 @@ Route::group([
     // whereNumber yaptık çünkü create de bulunamdı hatası verdi
     //id gelirse delete gelmezse oluştura gönder
     Route::get('quizzes/{id}', [QuizController::class, 'destroy'])->whereNumber('id')->name('quizzes.destroy');
+    Route::get('quizzes/{id}/details', [QuizController::class, 'show'])->whereNumber('id')->name('quizzes.details');
     Route::get('quiz/{quiz_id}/questions/{id}', [QuestionController::class, 'destroy'])->whereNumber('id')->name('questions.destroy');
     Route::resource('quizzes', QuizController::class);
     Route::resource('quiz/{quiz_id}/questions', QuestionController::class);

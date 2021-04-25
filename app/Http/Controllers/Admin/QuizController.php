@@ -67,7 +67,8 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        //
+        $quiz = Quiz::with("topTen.user","results.user")->withCount("questions")->find($id) ?? abort(404, 'Quiz bulunamadı');    
+        return view('admin.quiz.show',compact('quiz'));
     }
 
     /**
@@ -93,7 +94,7 @@ class QuizController extends Controller
     {
         $quiz = Quiz::find($id) ?? abort(404, 'Quiz Bulunamadı');
 
-        Quiz::where('id', $id)->first()->update($request->except(['_method', '_token']));
+        Quiz::find($id)->update($request->except(['_method', '_token']));
 
         return redirect()->route('quizzes.index')->withSuccess('Quiz güncelleme başarıyla gerçekleşti.');
     }

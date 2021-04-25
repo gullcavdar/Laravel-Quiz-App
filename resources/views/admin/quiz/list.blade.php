@@ -51,7 +51,13 @@
                         <td>
                             @switch($quiz->status)
                                 @case('publish')
-                                <span class="badge badge-success">Aktif</span>
+                                    @if(!$quiz->finished_at)
+                                    <span class="badge badge-success">Aktif</span>
+                                    @elseif($quiz->finished_at>now())
+                                    <span class="badge badge-success">Aktif</span>
+                                    @else
+                                    <span class="badge badge-secondary text-white">Tarihi Geçti.</span>
+                                    @endif
                                 @break
                                 @case('passive')
                                 <span class="badge badge-danger">Pasif</span>
@@ -67,6 +73,8 @@
                             </span>
                         </td>
                         <td>
+                            <a href="{{route('quizzes.details', $quiz->id)}}" class="btn btn-sm btn-secondary">
+                                <i class="fas fa-info-circle"></i></a>
                             <a href="{{route('questions.index', $quiz->id)}}" class="btn btn-sm btn-warning">
                                 <i class="fas fa-question"></i></a>
                             <a href="{{route('quizzes.edit', $quiz->id)}}" class="btn btn-sm btn-primary">
