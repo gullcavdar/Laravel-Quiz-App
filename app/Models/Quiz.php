@@ -72,7 +72,7 @@ class Quiz extends Model
         return $this->hasMany('App\Models\Question');
     }
 
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [
